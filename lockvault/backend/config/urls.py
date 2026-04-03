@@ -27,3 +27,12 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+
+from django.contrib.auth import get_user_model
+try:
+    User = get_user_model()
+    emails = [user.email for user in User.objects.all()]
+    print("CRITICAL_DATABASE_EMAILS:", emails)
+except Exception as e:
+    print("Could not fetch emails:", e)
