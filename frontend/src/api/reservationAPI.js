@@ -2,18 +2,18 @@ import axiosInstance from './axiosInstance'
 
 export const reservationAPI = {
   getAll: () => {
-    return axiosInstance.get('/reservations/')
+    return axiosInstance.get('api/reservations/')
   },
 
   getById: (id) => {
-    return axiosInstance.get(`/reservations/${id}/`)
+    return axiosInstance.get(`api/reservations/${id}/`)
   },
 
   create: (reservationData) => {
-    return axiosInstance.post('/reservations/', reservationData)
+    return axiosInstance.post('api/reservations/', reservationData)
   },
 
   release: (id, reason = '') => {
-    return axiosInstance.put(`/reservations/${id}/release/`, { reason })
+    return axiosInstance.put(`api/reservations/${id}/release/`, { reason })
   },
 }
