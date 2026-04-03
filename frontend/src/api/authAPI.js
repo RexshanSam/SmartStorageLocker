@@ -10,10 +10,10 @@ export const authAPI = {
   },
 
   refresh: (refreshToken) => {
-    return axiosInstance.post('/auth/refresh/', { refresh: refreshToken })
+    return axiosInstance.post('api/auth/refresh/', { refresh: refreshToken })
   },
 
   getMe: () => {
-    return axiosInstance.get('/auth/me/')
+    return axiosInstance.get('api/auth/me/')
   },
 }
