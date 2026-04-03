@@ -130,12 +130,25 @@ SPECTACULAR_SETTINGS = {
     'COMPONENT_SPLIT_REQUEST': True,
 }
 
-# CORS settings
+# --- UPDATED CORS SETTINGS ---
+
+# Fallback defaults if Render variables aren't reading properly
 CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='http://localhost:5173', cast=Csv())
+
+# This dynamically permits ALL Vercel preview generated deployments for your project
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://smart-storage-locker-.*\.vercel\.app$",
+]
+
 CORS_ALLOW_CREDENTIALS = True
 
-# CSRF settings
+# Safety net: If you are in debug mode or didn't set up the origin properly, this turns off CORS blocking completely.
+if DEBUG or not CORS_ALLOWED_ORIGINS:
+    CORS_ALLOW_ALL_ORIGINS = True
+
 CSRF_TRUSTED_ORIGINS = CORS_ALLOWED_ORIGINS
+
+# -----------------------------
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'
