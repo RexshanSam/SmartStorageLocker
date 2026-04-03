@@ -35,8 +35,9 @@ if settings.DEBUG:
 try:
     # Check if there are any lockers in your database
     if not Locker.objects.exists():
-        Locker.objects.create(locker_id="LKR-001", status="available", size="medium")
-        Locker.objects.create(locker_id="LKR-002", status="available", size="large")
+        # Fixed: Using the actual model fields 'locker_number' and 'location'
+        Locker.objects.create(locker_number="LKR-001", location="Main Hall", status="available", size="medium")
+        Locker.objects.create(locker_number="LKR-002", location="North Wing", status="available", size="large")
         print("SUCCESS: Seeded 2 test lockers into the database!")
     else:
         print("Lockers already exist in the database.")
