@@ -50,10 +50,7 @@ class LockerViewSet(viewsets.ModelViewSet):
         if size_filter:
             queryset = queryset.filter(size=size_filter)
 
-        page = self.paginate_queryset(queryset)
-        if page is not None:
-            serializer = self.get_serializer(page, many=True)
-            return self.get_paginated_response(serializer.data)
-
+        # FIXED: Bypassed the self.paginate_queryset step.
+        # This returns a clean array [...] instead of a paginated object.
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
