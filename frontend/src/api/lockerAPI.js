@@ -9,14 +9,14 @@ export const lockerAPI = {
   },
 
   create: (lockerData) => {
-    return axiosInstance.post('/lockers/', lockerData)
+    return axiosInstance.post('api/lockers/', lockerData)
   },
 
   update: (id, lockerData) => {
-    return axiosInstance.put(`/lockers/${id}/`, lockerData)
+    return axiosInstance.put(`api/lockers/${id}/`, lockerData)
   },
 
   delete: (id) => {
-    return axiosInstance.delete(`/lockers/${id}/`)
+    return axiosInstance.delete(`api/lockers/${id}/`)
   },
 }
