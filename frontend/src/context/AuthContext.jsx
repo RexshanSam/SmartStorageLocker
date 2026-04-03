@@ -16,7 +16,7 @@ export function AuthProvider({ children }) {
     }
 
     if (token) {
-      axios.get("http://localhost:8000/api/auth/me/", {
+      axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/auth/me/`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(res => {
@@ -32,8 +32,21 @@ export function AuthProvider({ children }) {
 
   const login = async (email, password) => {
     const res = await axios.post(
-      "http://localhost:8000/api/auth/login/",
+      `${import.meta.env.VITE_API_BASE_URL}/api/auth/login/`,
       { email, password },
+      { headers: { "Content-Type": "application/json" } }
+    )
+    localStorage.setItem("access_token", res.data.access)
+    localStorage.setItem("refresh_token", res.data.refresh)
+    localStorage.setItem("user", JSON.stringify(res.data.user))
+    setUser(res.data.user)
+    return res.data
+  }
+
+  const register = async (name, email, password, role) => {
+    const res = await axios.post(
+      `${import.meta.env.VITE_API_BASE_URL}/api/auth/register/`,
+      { name, email, password, role },
       { headers: { "Content-Type": "application/json" } }
     )
     localStorage.setItem("access_token", res.data.access)
@@ -52,7 +65,7 @@ export function AuthProvider({ children }) {
   }
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, logout }}>
+    <AuthContext.Provider value={{ user, loading, login, register, logout }}>
       {children}
     </AuthContext.Provider>
   )

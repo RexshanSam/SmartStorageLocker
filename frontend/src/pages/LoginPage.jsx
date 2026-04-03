@@ -47,7 +47,7 @@ const LoginPage = () => {
           <p className="text-gray-400 mt-2">Sign in to your LockVault account</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="glass rounded-xl p-8 space-y-6">
+        <form onSubmit={handleSubmit} className="border border-white/10 rounded-xl p-8 space-y-6">
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
               Email
