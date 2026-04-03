@@ -418,5 +418,9 @@ For issues or questions, please open an issue on the repository.
 
 
 **Website Live Link-->  https://smart-storage-locker.vercel.app/**
+
 **Backend Link     -->  https://smartstoragelocker.onrender.com/api/lockers/**
+
 **Swagger file     -->  https://smartstoragelocker.onrender.com/api/schema/**
+
+**Admin Panel      -->  https://smartstoragelocker.onrender.com/admin/**
