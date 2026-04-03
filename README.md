@@ -2,7 +2,7 @@
 
 A full-stack web application for managing storage lockers with reservation capabilities, built with Django REST Framework backend and React frontend.
 
-![LockVault Dashboard](https://via.placeholder.com/1200x600/1e293b/3b82f6?text=LockVault+Dashboard)
+![LockVault Dashboard]
 
 ## Features
 
